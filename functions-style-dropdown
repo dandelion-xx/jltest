@@ -1,0 +1,48 @@
+/**
+ * Add styles/classes to the "Styles" drop-down
+ */ 
+add_filter( 'tiny_mce_before_init', 'add_format' );
+
+function add_format( $settings ) {
+
+    $style_formats = array(
+        array(
+            'title' => 'Doc Title',
+             'block' => 'div',
+            'classes' => 'doc-title',
+			 'wrapper' => true
+            ),
+        array(
+            'title' => 'One Sixth',
+            'block' => 'div',
+            'classes' => 'one_sixth',
+			 'wrapper' => true
+        ),
+		array(
+            'title' => 'Five Sixth Last',
+            'block' => 'div',
+            'classes' => 'five_sixth_last', 
+			'wrapper' => true
+        ),
+        array(
+            'title' => 'TOC Yearly',
+            'block' => 'div',
+            'classes' => 'toc_yearly',
+            'wrapper' => true
+        ),
+        array(
+            'title' => 'Red Uppercase Text',
+            'inline' => 'span',
+            'styles' => array(
+                'color'         => 'red', // or hex value #ff0000
+                'fontWeight'    => 'bold',
+                'textTransform' => 'uppercase'
+            )
+        )
+    );
+
+    $settings['style_formats'] = json_encode( $style_formats );
+
+    return $settings;
+
+}
